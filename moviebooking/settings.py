@@ -25,7 +25,7 @@ SECRET_KEY = 'la%z&0rx_q+r!p_+1lrgsu#xyyunqxg+j7$b5b$v*06h1g*wz3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['moviemaniaa.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
