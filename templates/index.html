@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	{%load static%}
+	<link rel="stylesheet" href="{% static 'cssforindex.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    {% if user.is_authenticated %}
+	<div class = "container">
+	    <div class="home1">
+			    <h1><label>Fakeflix</label></h1><br/>
+			    <form action="movies"><button class="mbut">Movies</button></form><br/>
+			    <form action="cinemas"><button class="mbut">Halls</button></form><br/>
+			    <form action="mysaved"><button class="mbut">My Bucket</button></form><br/>
+			    <form action="logout"><button class="mbut">Log Out</button></form><br/>
+        </div>
+	</div>
+    {% else %}
+    <div class="container" id="container">
+	    <div class="form-container sign-up-container">
+		    <form action="register" method="post" class = "avoid">
+			    {% csrf_token %}
+			    <h1>Create Account</h1>
+			    <input type="text" placeholder="Username" name="username" />
+			    <input type="email" name="email" placeholder="Email" />
+			    <input type="password" name="password" placeholder="Password" />
+			    <button type="submit">Sign Up</button>
+		    </form>
+	    </div>
+	    <div class="form-container sign-in-container">
+		    <form action="login" method="post" class = "avoid">
+			    {% csrf_token %}
+			    <h1>Sign in</h1>
+			    <input type="text" name="username" placeholder="Username"><br />
+			    <input type="password" name="password" placeholder="Password"><br />
+			    <button type="submit">Sign In</button>
+		    </form>
+	    </div>
+	    <div class="overlay-container">
+		    <div class="overlay">
+			    <div class="overlay-panel overlay-left">
+			    	<h1>Welcome Back!</h1>
+			    	<p>To keep connected with us please login with your personal info</p>
+				    <button class="ghost" id="signIn">Sign In</button><br/>
+			    </div>
+			    <div class="overlay-panel overlay-right">
+				    <h1>Hello, Friend!</h1>
+				    <p>Enter your personal details and start journey with us</p>
+				    <button class="ghost" id="signUp">Sign Up</button><br/>
+					<button onclick="SkipChange()" class="ghost" id = "skip">Skip>></button>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+    <script>
+	{% for message in messages %}
+	var x = '{{message}}';
+	alert(x);
+	{% endfor %}
+
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+	});
+
+	signInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+
+    function SkipChange(){
+        document.getElementById("container").innerHTML = 
+        `<div class="home1">
+			    <h1><label>Fakeflix</label></h1><br/>
+			    <form action="movies"><button class="mbut">Movies</button></form><br/>
+			    <form action="cinemas"><button class="mbut">Halls</button></form><br/>`;
+    }
+
+    </script>
+
+    {% endif %}
+</body>
+</html>

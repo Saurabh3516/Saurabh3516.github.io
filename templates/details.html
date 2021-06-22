@@ -1,0 +1,9 @@
+{%extends 'base.html' %}
+{% block title %}/Movies/details {% endblock %}
+
+{% block content %}
+    <iframe width="800" height="450" src="{{dets.promo}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <h1>Name : {{dets.Name}}</h1><br/>
+     <h1>Director : {{dets.Directed_by}}</h1><br/>
+     <h1>Producer : {{dets.Produced_by}}</h1><br/>
+{% endblock %}

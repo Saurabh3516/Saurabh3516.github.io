@@ -1,0 +1,46 @@
+{%extends 'base.html' %}
+{% block title %}/Movies {% endblock %}
+
+{% block content %}
+     <style>
+     table {
+     font-family: arial, sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+     }
+
+     td, th {
+     text-align: left;
+     padding: 8px;
+    }
+
+    .history {
+     border: 1px solid black;
+     text-align: left;
+     padding: 8px;
+    }
+
+    </style>
+    <table>
+          <tr>
+               <td>Hello! {{x}} :)</td>
+               <td>Name : {{x}}<br/>
+               Email : {{y}}<br/>
+               Total transaction : {{z}}.0 Rs.<br/>
+          </tr>
+    </table>
+    <h1>History</h1>
+    <table>
+          <tr>
+              <th>Movie</th>
+              <th>Price</th>
+          </tr>
+          {% for i in p %}
+          <tr>
+              <td class="history"><a href="{% url 'detail' i.id %}">{{i.Name}}</a></td>
+              <td class="history">{{i.Price}}</td>
+          </tr>
+          {% endfor %}
+    </table>
+
+{% endblock %}

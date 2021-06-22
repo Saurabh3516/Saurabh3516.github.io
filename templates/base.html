@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fakeflix{% block title %}{% endblock %}</title>
+	{%load static%}
+	<link rel="stylesheet" href="{% static 'cssforbase.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<header>
+		<nav>
+			<div>
+				<h1> MovieMania </h1>
+			</div>
+		    <div class = "topnav">
+			    <ul>
+				    <li class="list_item"><a class="lnks" href="/">Home</a></li>
+				    <li class="list_item"><a class="lnks" href="/movies">Movies</a></li>
+				    <li class="list_item"><a class="lnks" href="/cinemas">Halls</a></li>
+					{% if user.is_authenticated %}
+					<li class="list_item"><a class="lnks" href="/mysaved">My Bucket</a></li>
+					<li class="list_item"><a class="lnks" href="/logout">Logout</a> </li>
+					{% endif %}
+			    </ul>
+		    </div>
+		</nav>
+	</header>
+	<section>
+		{% block content %} {% endblock %}
+	</section>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+{% block title %}/cinemas {% endblock %}
+
+{% block content %}
+     <style>
+     table {
+     font-family: arial, sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+     }
+
+     td, th {
+     border: 1px solid grey;
+     text-align: left;
+     padding: 8px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #F8F8F8;
+    }
+    </style>
+    <table>
+          <tr>
+               <th>Cinema</th>
+               <th>About</th>
+          </tr>
+          {% for i in cinema %}
+          <tr>
+               <td><img src="/media/{{i.photo}}" width="200"/></td>
+               <td>Name : {{i.Name}}<br/>
+               Location : {{i.Location}}<br/>
+               Rating : {{i.rating}}<br/>
+               Votes : {{i.votes}}<br/>
+               Contact Number:{{i.Contact}}<br/>
+               URL : {{i.url}}<br/>
+               </td>
+          </tr>
+          {% endfor %}
+    </table>
+{% endblock %}
